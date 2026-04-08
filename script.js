@@ -1,100 +1,89 @@
-// Initialize event listeners for download buttons and cards
-document.addEventListener('DOMContentLoaded', function() {
-  const downloadButtons = document.querySelectorAll('.btn-download');
-  const cards = document.querySelectorAll('.card');
-  
-  downloadButtons.forEach(button => {
-    button.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      const imageUrl = this.getAttribute('data-image');
-      const fileName = this.getAttribute('data-name');
-      downloadImage(this, imageUrl, fileName);
+// CATEGORY FILTERING
+document.querySelectorAll('.category-card').forEach(card => {
+  card.addEventListener('click', function() {
+    const category = this.dataset.category;
+    // For demo purposes, we'll filter based on alt text containing category keywords
+    document.querySelectorAll('.gallery .card').forEach(galleryCard => {
+      const alt = galleryCard.querySelector('img').alt.toLowerCase();
+      const shouldShow = alt.includes(category) || category === 'all';
+      galleryCard.style.display = shouldShow ? 'block' : 'none';
     });
-    
-    // Add keyboard accessibility
-    button.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        this.click();
-      }
-    });
-  });
-  
-  // Touch device support - toggle overlay on card click/touch
-  cards.forEach(card => {
-    card.addEventListener('click', function(e) {
-      if (e.target.classList.contains('btn-download')) return;
-      
-      // Only toggle on touch devices
-      if (window.matchMedia('(hover: none)').matches) {
-        this.classList.toggle('active');
-      }
-    });
-    
-    card.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' && window.matchMedia('(hover: none)').matches) {
-        this.classList.toggle('active');
-      }
-    });
+    // Highlight selected category
+    document.querySelectorAll('.category-card').forEach(c => c.classList.remove('active'));
+    this.classList.add('active');
   });
 });
 
-async function downloadImage(button, imageUrl, fileName) {
-  // Validate inputs
-  if (!imageUrl || !fileName) {
-    console.error('Missing image URL or file name');
-    alert('Download configuration error.');
-    return;
-  }
-  
-  const originalText = button.textContent;
-  
-  try {
-    button.classList.add('downloading');
-    button.disabled = true;
-    button.textContent = 'Downloading...';
-    
-    // Try to fetch as blob for better compatibility
-    const response = await fetch(imageUrl);
-    
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    
-    const blob = await response.blob();
-    const blobUrl = URL.createObjectURL(blob);
-    
-    // Create and trigger download
-    const link = document.createElement('a');
-    link.href = blobUrl;
-    link.download = fileName;
-    link.style.display = 'none';
-    document.body.appendChild(link);
-    link.click();
-    
-    // Show success
-    button.textContent = 'Downloaded!';
-    
-    // Clean up
-    setTimeout(() => {
-      document.body.removeChild(link);
-      URL.revokeObjectURL(blobUrl);
-      button.classList.remove('downloading');
-      button.disabled = false;
-      button.textContent = originalText;
-    }, 1500);
-    
-  } catch (error) {
-    console.error('Error downloading image:', error);
-    button.textContent = 'Download Failed';
-    button.classList.remove('downloading');
-    button.disabled = false;
-    
-    setTimeout(() => {
-      button.textContent = originalText;
-    }, 2000);
-    
-    alert('Failed to download image. Please try again.');
-  }
+// MODAL ENHANCED
+function openModal(card){
+  const imgSrc = card.querySelector('img').src;
+  const imgAlt = card.querySelector('img').alt;
+  document.getElementById('modalImg').src = imgSrc;
+  document.getElementById('modalImg').alt = imgAlt;
+  const downloadBtn = document.getElementById('modalDownload');
+  downloadBtn.setAttribute('href', imgSrc);
+  downloadBtn.setAttribute('download', imgAlt.replace('Wallpaper ', 'wallpaper') + '.jpg');
+  document.getElementById('modal').classList.add('active');
+  document.body.style.overflow = 'hidden'; // Prevent background scroll
 }
+
+function closeModal(){
+  document.getElementById('modal').classList.remove('active');
+  document.body.style.overflow = 'auto'; // Restore scroll
+}
+
+// Close modal on outside click
+document.getElementById('modal').addEventListener('click', function(e) {
+  if (e.target === this) {
+    closeModal();
+  }
+});
+
+// Close modal on escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.getElementById('modal').classList.contains('active')) {
+    closeModal();
+  }
+});
+
+// FREE DOWNLOAD BUTTON
+document.querySelectorAll('.btn-download').forEach(btn=>{
+  btn.addEventListener('click', async function(e){
+    e.preventDefault();
+    const imageUrl = this.dataset.image || this.href;
+    const fileName = this.dataset.name || 'wallpaper.jpg';
+    try {
+      const res = await fetch(imageUrl);
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = fileName; document.body.appendChild(a); a.click();
+      a.remove(); URL.revokeObjectURL(url);
+    } catch(err){ alert('Download failed!'); }
+  });
+});
+
+// MINIMIZE/EXPAND GALLERY
+const gallery = document.getElementById('gallery');
+document.getElementById('toggleGallery').addEventListener('click', ()=>{
+  gallery.style.display = (gallery.style.display==='none')?'grid':'none';
+});
+
+// SEARCH FILTER
+document.getElementById('searchInput').addEventListener('input', function(){
+  const value = this.value.toLowerCase();
+  document.querySelectorAll('.gallery .card').forEach(card=>{
+    const alt = card.querySelector('img').alt.toLowerCase();
+    card.style.display = alt.includes(value)?'block':'none';
+  });
+});
+
+// PROMO SLIDER AUTO-SCROLL
+const slider = document.querySelector('.promo-slider');
+let scrollAmount = 0;
+const slideWidth = 320; // Approximate width of each slide
+setInterval(()=>{
+  scrollAmount += slideWidth;
+  if(scrollAmount >= slider.scrollWidth - slider.clientWidth) scrollAmount = 0;
+  slider.scrollTo({left:scrollAmount, behavior:'smooth'});
+}, 3500); // Slightly faster for 7 slides

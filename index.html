@@ -1,103 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Free beautiful wallpapers created by Ibad">
-  <title>Wallpapers by Ibad</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Created by Ibad</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div class="header-content">
-      <h1>Wallpapers</h1>
-      <p class="subtitle">Created by Ibad</p>
-      <p class="tagline">High-quality wallpapers for your desktop • Free to download</p>
+
+<!-- TOP SEARCH BAR -->
+<header>
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search wallpapers...">
+  </div>
+  <h1>Created by Ibad</h1>
+  <p>Premium Collection • Free Download</p>
+</header>
+
+<!-- PROMO SLIDER -->
+<section class="promo-slider">
+  <div class="promo-slide" style="background-image:url('https://picsum.photos/1200/300?1');"><h2>🔥 <span class="highlight">Exclusive Wallpapers!</span></h2></div>
+  <div class="promo-slide" style="background-image:url('https://picsum.photos/1200/300?2');"><h2>✨ <span class="highlight">High Quality & Free</span></h2></div>
+  <div class="promo-slide" style="background-image:url('https://picsum.photos/1200/300?3');"><h2>💜 <span class="highlight">Ibad Collection</span></h2></div>
+  <div class="promo-slide" style="background-image:url('https://picsum.photos/1200/300?4');"><h2>🌟 <span class="highlight">Stunning Designs</span></h2></div>
+  <div class="promo-slide" style="background-image:url('https://picsum.photos/1200/300?5');"><h2>🎉 <span class="highlight">Free for Everyone</span></h2></div>
+  <div class="promo-slide" style="background-image:url('https://picsum.photos/1200/300?6');"><h2>📸 <span class="highlight">4K Wallpapers</span></h2></div>
+  <div class="promo-slide" style="background-image:url('https://picsum.photos/1200/300?7');"><h2>🚀 <span class="highlight">Premium Collection</span></h2></div>
+</section>
+
+<!-- GALLERY CONTROL -->
+<div class="gallery-control">
+  <button id="toggleGallery">Minimize / Expand Gallery</button>
+</div>
+
+<!-- WALLPAPER GALLERY -->
+<div class="gallery" id="gallery">
+
+  <!-- 30 Wallpapers (example placeholder images) -->
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?11" alt="Wallpaper 1 - Nature"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?11" data-name="wallpaper1.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?12" alt="Wallpaper 2 - Abstract"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?12" data-name="wallpaper2.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?13" alt="Wallpaper 3 - Space"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?13" data-name="wallpaper3.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?14" alt="Wallpaper 4 - Animals"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?14" data-name="wallpaper4.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?15" alt="Wallpaper 5 - City"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?15" data-name="wallpaper5.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?16" alt="Wallpaper 6 - Minimal"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?16" data-name="wallpaper6.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?17" alt="Wallpaper 7 - Nature"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?17" data-name="wallpaper7.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?18" alt="Wallpaper 8 - Abstract"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?18" data-name="wallpaper8.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?19" alt="Wallpaper 9 - Space"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?19" data-name="wallpaper9.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?20" alt="Wallpaper 10 - Animals"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?20" data-name="wallpaper10.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?21" alt="Wallpaper 11 - City"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?21" data-name="wallpaper11.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?22" alt="Wallpaper 12 - Minimal"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?22" data-name="wallpaper12.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?23" alt="Wallpaper 13 - Nature"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?23" data-name="wallpaper13.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?24" alt="Wallpaper 14 - Abstract"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?24" data-name="wallpaper14.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?25" alt="Wallpaper 15 - Space"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?25" data-name="wallpaper15.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?26" alt="Wallpaper 16 - Animals"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?26" data-name="wallpaper16.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?27" alt="Wallpaper 17 - City"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?27" data-name="wallpaper17.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?28" alt="Wallpaper 18 - Minimal"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?28" data-name="wallpaper18.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?29" alt="Wallpaper 19 - Nature"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?29" data-name="wallpaper19.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?30" alt="Wallpaper 20 - Abstract"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?30" data-name="wallpaper20.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?31" alt="Wallpaper 21 - Space"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?31" data-name="wallpaper21.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?32" alt="Wallpaper 22 - Animals"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?32" data-name="wallpaper22.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?33" alt="Wallpaper 23 - City"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?33" data-name="wallpaper23.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?34" alt="Wallpaper 24 - Minimal"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?34" data-name="wallpaper24.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?35" alt="Wallpaper 25 - Nature"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?35" data-name="wallpaper25.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?36" alt="Wallpaper 26 - Abstract"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?36" data-name="wallpaper26.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?37" alt="Wallpaper 27 - Space"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?37" data-name="wallpaper27.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?38" alt="Wallpaper 28 - Animals"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?38" data-name="wallpaper28.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?39" alt="Wallpaper 29 - City"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?39" data-name="wallpaper29.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?40" alt="Wallpaper 30 - Minimal"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?40" data-name="wallpaper30.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?31"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?31" data-name="wallpaper21.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?32"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?32" data-name="wallpaper22.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?33"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?33" data-name="wallpaper23.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?34"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?34" data-name="wallpaper24.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?35"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?35" data-name="wallpaper25.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?36"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?36" data-name="wallpaper26.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?37"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?37" data-name="wallpaper27.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?38"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?38" data-name="wallpaper28.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?39"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?39" data-name="wallpaper29.jpg">Free Download</a></div></div>
+
+  <div class="card" onclick="openModal(this)"><img src="https://picsum.photos/500/300?40"><div class="card-overlay"><a href="#" class="btn-download" data-image="https://picsum.photos/500/300?40" data-name="wallpaper30.jpg">Free Download</a></div></div>
+
+</div>
+
+<!-- FLASH DEALS BANNER -->
+<section class="flash-deals">
+  <div class="deal-banner">
+    <h3>⚡ FLASH SALE: 50% OFF All Premium Wallpapers!</h3>
+    <p>Limited time offer - Download now!</p>
+  </div>
+</section>
+
+<!-- CATEGORY SHORTCUTS -->
+<section class="categories">
+  <h3>Explore Categories</h3>
+  <div class="category-grid">
+    <div class="category-card" data-category="nature">
+      <i>🌿</i>
+      <span>Nature</span>
     </div>
-  </header>
+    <div class="category-card" data-category="abstract">
+      <i>🎨</i>
+      <span>Abstract</span>
+    </div>
+    <div class="category-card" data-category="space">
+      <i>🚀</i>
+      <span>Space</span>
+    </div>
+    <div class="category-card" data-category="animals">
+      <i>🐾</i>
+      <span>Animals</span>
+    </div>
+    <div class="category-card" data-category="city">
+      <i>🏙️</i>
+      <span>City</span>
+    </div>
+    <div class="category-card" data-category="minimal">
+      <i>✨</i>
+      <span>Minimal</span>
+    </div>
+  </div>
+</section>
 
-  <main class="container">
-    <section class="gallery">
-      
-      <div class="card">
-        <img src="images/wallpaper1.jpg" alt="Mountain Lake" loading="lazy">
-        <div class="card-overlay">
-          <h3>Mountain Lake</h3>
-          <button class="btn btn-download" 
-                  data-image="images/wallpaper1.jpg" 
-                  data-name="Mountain-Lake.jpg">
-            Download
-          </button>
-        </div>
-      </div>
+<!-- MODAL POPUP -->
+<div id="modal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img id="modalImg" src="" alt="Wallpaper Preview">
+  <a id="modalDownload" href="#" download="wallpaper.jpg" class="btn-download modal-btn">Download Wallpaper</a>
+</div>
 
-      <div class="card">
-        <img src="images/wallpaper2.jpg" alt="Forest" loading="lazy">
-        <div class="card-overlay">
-          <h3>Forest</h3>
-          <button class="btn btn-download" 
-                  data-image="images/wallpaper2.jpg" 
-                  data-name="Forest.jpg">
-            Download
-          </button>
-        </div>
-      </div>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <h4>Follow Us</h4>
+    <div class="social-links">
+      <a href="https://youtube.com/@yourchannel" target="_blank">📺 YouTube</a>
+      <a href="https://instagram.com/youraccount" target="_blank">📸 Instagram</a>
+    </div>
+    <p>&copy; 2024 Ibad Wallpapers. All rights reserved.</p>
+  </div>
+</footer>
 
-      <div class="card">
-        <img src="images/wallpaper3.jpg" alt="Ocean Sunset" loading="lazy">
-        <div class="card-overlay">
-          <h3>Ocean Sunset</h3>
-          <button class="btn btn-download" 
-                  data-image="images/wallpaper3.jpg" 
-                  data-name="Ocean-Sunset.jpg">
-            Download
-          </button>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="images/wallpaper4.jpg" alt="City Night" loading="lazy">
-        <div class="card-overlay">
-          <h3>City Night</h3>
-          <button class="btn btn-download" 
-                  data-image="images/wallpaper4.jpg" 
-                  data-name="City-Night.jpg">
-            Download
-          </button>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="images/wallpaper5.jpg" alt="Abstract" loading="lazy">
-        <div class="card-overlay">
-          <h3>Abstract</h3>
-          <button class="btn btn-download" 
-                  data-image="images/wallpaper5.jpg" 
-                  data-name="Abstract.jpg">
-            Download
-          </button>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="images/wallpaper6.jpg" alt="Sunrise" loading="lazy">
-        <div class="card-overlay">
-          <h3>Sunrise</h3>
-          <button class="btn btn-download" 
-                  data-image="images/wallpaper6.jpg" 
-                  data-name="Sunrise.jpg">
-            Download
-          </button>
-        </div>
-      </div>
-
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2026 Wallpapers by Ibad. All rights reserved.</p>
-  </footer>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
