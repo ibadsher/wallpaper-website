@@ -1,15 +1,15 @@
-// CATEGORY FILTERING
-document.querySelectorAll('.category-card').forEach(card => {
-  card.addEventListener('click', function() {
+// CATEGORY FILTERING - Updated for header buttons
+document.querySelectorAll('.category-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
     const category = this.dataset.category;
-    // For demo purposes, we'll filter based on alt text containing category keywords
+    // Filter gallery based on alt text containing category keywords
     document.querySelectorAll('.gallery .card').forEach(galleryCard => {
       const alt = galleryCard.querySelector('img').alt.toLowerCase();
-      const shouldShow = alt.includes(category) || category === 'all';
+      const shouldShow = category === 'all' || alt.includes(category);
       galleryCard.style.display = shouldShow ? 'block' : 'none';
     });
     // Highlight selected category
-    document.querySelectorAll('.category-card').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
     this.classList.add('active');
   });
 });
